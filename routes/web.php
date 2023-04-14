@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Master\DesignationController;
 use App\Http\Controllers\Master\RoleController;
+use App\Http\Controllers\Master\DesignationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,7 @@ use App\Http\Controllers\Master\RoleController;
 Route::get('/', [DashboardController::class, 'index'])->name('home');
 Route::resource('/master/role', RoleController::class)->only('index');
 Route::resource('/master/designation', DesignationController::class)->only('index');
+
+Route::get('/login', [AuthController::class, 'showLoginPage'])->name('login');
+Route::post('/login', [AuthController::class, 'validateLogin'])->name('validateLogin');
+Route::delete('/logout', [AuthController::class, 'logoutUser'])->name('logout');
