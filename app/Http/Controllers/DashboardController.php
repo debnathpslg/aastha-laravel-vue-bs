@@ -11,8 +11,6 @@ class DashboardController extends Controller
     //
     public function index(Request $request)
     {
-        $user = Auth::user();
-
-        return Inertia::render('Home', compact(['user']));
+        return Inertia::render('Home');
     }
 }

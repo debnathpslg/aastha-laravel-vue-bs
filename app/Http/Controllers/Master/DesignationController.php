@@ -15,9 +15,7 @@ class DesignationController extends Controller
     public function index()
     {
         //
-        $user = Auth::user();
-
-        return Inertia::render('Master/Designation/Index', compact(['user']));
+        return Inertia::render('Master/Designation/Index');
     }
 
     /**

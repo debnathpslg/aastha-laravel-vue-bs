@@ -15,9 +15,7 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         //
-        $user = Auth::user();
-
-        return Inertia::render('Master/Role/Index', compact(['user']));
+        return Inertia::render('Master/Role/Index');
     }
 
     /**

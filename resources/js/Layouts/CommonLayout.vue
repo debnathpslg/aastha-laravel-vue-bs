@@ -1,5 +1,5 @@
 <template>
-    <div v-if="user">Logout</div>
+    <div v-if="currentUser">Logout</div>
     <div v-else>Login</div>
     <hr />
     <slot />
@@ -7,5 +7,5 @@
 
 <script setup>
 import { Link } from "@inertiajs/vue3";
-defineProps(["user"]);
+defineProps(["currentUser"]);
 </script>
