@@ -19,7 +19,7 @@
                                         alt=""
                                     />
                                     <span class="d-none d-lg-block"
-                                        >NextHome</span
+                                        >Aastha</span
                                     >
                                 </Link>
                             </div>

@@ -19,8 +19,8 @@ class MessageFactory extends Factory
         return [
             //
             'body' => fake()->paragraph(),
-            'user_id' => rand(1, 2),
-            'to_user_id' => rand(1, 2),
+            'user_id' => rand(1, 4),
+            'to_user_id' => rand(1, 4),
         ];
     }
 }

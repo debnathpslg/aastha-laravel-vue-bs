@@ -3,7 +3,7 @@
         <div class="d-flex align-items-center justify-content-between">
             <Link :href="route('home')" class="logo d-flex align-items-center">
                 <img src="/storage/assets/img/logo.png" alt="" />
-                <span class="d-none d-lg-block">NextHome</span>
+                <span class="d-none d-lg-block">Aastha</span>
             </Link>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div>

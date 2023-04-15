@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>NextHome</title>
+        <title>Aastha</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
         <!-- Favicons -->
