@@ -18,14 +18,16 @@
                         data-bs-toggle="dropdown"
                     >
                         <i class="bi bi-chat-left-text"></i>
-                        <span class="badge bg-success badge-number">3</span> </a
+                        <span class="badge bg-success badge-number">{{
+                            newMsg
+                        }}</span> </a
                     ><!-- End Messages Icon -->
 
                     <ul
                         class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages"
                     >
                         <li class="dropdown-header">
-                            You have 3 new messages
+                            You have {{ newMsg }} new messages
                             <a href="#"
                                 ><span
                                     class="badge rounded-pill bg-primary p-2 ms-2"
@@ -37,68 +39,29 @@
                             <hr class="dropdown-divider" />
                         </li>
 
-                        <li class="message-item">
-                            <a href="#">
-                                <img
-                                    src="/storage/assets/img/messages-1.jpg"
-                                    alt=""
-                                    class="rounded-circle"
-                                />
-                                <div>
-                                    <h4>Maria Hudson</h4>
-                                    <p>
-                                        Velit asperiores et ducimus soluta
-                                        repudiandae labore officia est ut...
-                                    </p>
-                                    <p>4 hrs. ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-
-                        <li class="message-item">
-                            <a href="#">
-                                <img
-                                    src="/storage/assets/img/messages-2.jpg"
-                                    alt=""
-                                    class="rounded-circle"
-                                />
-                                <div>
-                                    <h4>Anna Nelson</h4>
-                                    <p>
-                                        Velit asperiores et ducimus soluta
-                                        repudiandae labore officia est ut...
-                                    </p>
-                                    <p>6 hrs. ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-
-                        <li class="message-item">
-                            <a href="#">
-                                <img
-                                    src="/storage/assets/img/messages-3.jpg"
-                                    alt=""
-                                    class="rounded-circle"
-                                />
-                                <div>
-                                    <h4>David Muldon</h4>
-                                    <p>
-                                        Velit asperiores et ducimus soluta
-                                        repudiandae labore officia est ut...
-                                    </p>
-                                    <p>8 hrs. ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
+                        <span v-for="item in latestMsg" :key="item.id">
+                            <li class="message-item">
+                                <a href="#">
+                                    <img
+                                        src="/storage/assets/img/messages-1.jpg"
+                                        alt=""
+                                        class="rounded-circle"
+                                    />
+                                    <div>
+                                        <h4>{{ item.user.name }}</h4>
+                                        <p>{{ item.body.substr(1, 50) }} ...</p>
+                                        <p class="text-end fw-bold fst-italic">
+                                            {{
+                                                dayjs(item.updated_at).fromNow()
+                                            }}
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                        </span>
 
                         <li class="dropdown-footer">
                             <a href="#">Show all messages</a>
@@ -186,6 +149,10 @@
 <script setup>
 import { Link, usePage } from "@inertiajs/vue3";
 import { computed } from "vue";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
 
 // defineProps({
 //     currentUser: Array,
@@ -193,4 +160,8 @@ import { computed } from "vue";
 
 const page = usePage();
 const user = computed(() => page.props.currentUser);
+const newMsg = computed(() => page.props.newMsg);
+const latestMsg = computed(() => page.props.latestMsg);
+
+//dayjs(chirp.updated_at).fromNow()
 </script>

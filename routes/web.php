@@ -21,10 +21,17 @@ use App\Http\Controllers\Master\DesignationController;
 //     return view('app');
 // });
 
-Route::get('/', [DashboardController::class, 'index'])->name('home');
-Route::resource('/master/role', RoleController::class)->only('index');
-Route::resource('/master/designation', DesignationController::class)->only('index');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('home');
 
-Route::get('/login', [AuthController::class, 'showLoginPage'])->name('login');
+    Route::get('/home', function () {
+        return redirect()->route('home');
+    });
+
+    Route::resource('/master/role', RoleController::class)->only('index');
+    Route::resource('/master/designation', DesignationController::class)->only('index');
+});
+
+Route::get('/login', [AuthController::class, 'showLoginPage'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'validateLogin'])->name('validateLogin');
-Route::delete('/logout', [AuthController::class, 'logoutUser'])->name('logout');
+Route::delete('/logout', [AuthController::class, 'logoutUser'])->name('logout')->middleware('auth');

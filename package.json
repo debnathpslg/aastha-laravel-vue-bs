@@ -8,6 +8,7 @@
         "@jridgewell/sourcemap-codec": "^1.4.15",
         "@vitejs/plugin-vue": "^4.1.0",
         "axios": "^1.1.2",
+        "dayjs": "^1.11.7",
         "laravel-vite-plugin": "^0.7.2",
         "loadash": "^1.0.0",
         "postcss": "^8.4.21",
@@ -15,7 +16,6 @@
         "vue": "^3.2.47"
     },
     "dependencies": {
-        "@inertiajs/vue3": "^1.0.3",
-        "dayjs": "^1.11.7"
+        "@inertiajs/vue3": "^1.0.3"
     }
 }

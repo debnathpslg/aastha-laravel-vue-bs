@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -47,6 +48,20 @@ class HandleInertiaRequests extends Middleware
                 'name' => $request->user()->name,
                 'email' => $request->user()->email,
             ] : null,
-        ]);
+
+            'newMsg' => $request->user() ?
+                Message::with(['user'])
+                    ->where('to_user_id', $request->user()->id)
+                    ->where('is_seen', false)
+                    ->count(): null,
+
+            'latestMsg' => $request->user() ?
+                Message::with(['user'])
+                    ->where('to_user_id', $request->user()->id)
+                    ->where('is_seen', false)
+                    ->orderBy('updated_at', 'DESC')
+                    ->take(3)
+                    ->get(): null,
+            ]);
     }
 }
