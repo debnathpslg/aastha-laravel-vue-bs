@@ -1,5 +1,5 @@
 <template>
-    <div v-if="currentUser">
+    <!-- <div v-if="currentUser">
         <Link :href="route('logout')" method="delete" as="button">Logout</Link>
     </div>
     <div v-else>
@@ -7,7 +7,7 @@
     </div>
     <br />
     <p>This is alternate layout to be viewed in a specific page.</p>
-    <hr />
+    <hr /> -->
     <slot />
 </template>
 
